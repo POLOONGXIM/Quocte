@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gửi bạn của tôi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="floating-img" id="img1">
+      <img
+        src="img/giadinh.jpg"
+        data-full-src="img/giadinh.jpg"
+        alt="hình 1"
+        data-heading="💐Lời chúc 20/10 cho tất cả những người phụ nữ thân yêu trong gia đình💖"
+        data-text="Nhân ngày Phụ nữ Việt Nam 20/10, con/cháu/em xin gửi những lời yêu thương nhất đến tất cả những người phụ nữ tuyệt vời trong gia đình mình.
+
+Chúc bà ngoại luôn mạnh khỏe, sống vui và hạnh phúc bên con cháu.
+Chúc mẹ mãi xinh đẹp, bình an và luôn là ngọn lửa ấm áp của gia đình.
+Chúc các chị luôn rạng rỡ, tự tin, thành công trong công việc và viên mãn trong cuộc sống.
+
+Cảm ơn mọi người vì đã luôn là những “bông hoa” đẹp nhất trong vườn nhà, mang đến yêu thương, sự hy sinh và niềm vui cho tất cả chúng ta.💖🏡
+
+Chúc cả nhà mình một ngày 20/10 thật hạnh phúc, tràn ngập hoa, quà và tiếng cười 🌷💖🌻"
+        data-signature=""
+      />
+    </div>
+    <div class="floating-img" id="img2">
+      <img
+        src="img/me.jpg"
+        data-full-src="img/me.jpg"
+        alt="hình 2"
+        data-heading="Gửi Mẹ Yêu🌹"
+        data-text="Mẹ yêu ơi, nhân ngày 20/10, con chúc mẹ thật nhiều sức khỏe, luôn vui cười và sống những ngày thật bình an, hạnh phúc. Cảm ơn mẹ vì đã luôn là bến đỗ bình yên, là người phụ nữ tuyệt vời nhất trong cuộc đời con ❤️"
+        data-signature=""
+      />
+    </div>
+    <div class="floating-img" id="img3">
+      <img
+        src="img/ngoai.jpg"
+        data-full-src="img/ngoai.jpg"
+        alt="hình 3"
+        data-heading="Gửi Ngoại Kính Yêu🌹"
+        data-text="Ngoại kính yêu, con chúc ngoại luôn mạnh khỏe, sống thật lâu bên con cháu. Chúc ngoại luôn có nhiều niềm vui, luôn nở nụ cười hiền từ mà cả nhà đều yêu quý. Con thương ngoại nhiều lắm 💐"
+        data-signature=""
+      />
+    </div>
+    <div class="floating-img" id="img4">
+      <img
+        src="img/oc.jpg"
+        data-full-src="img/oc.jpg"
+        alt="hình 3"
+        data-heading="Gửi Chị Óc🌹"
+        data-text="Chúc chị hai 20/10 thật rạng rỡ và tràn đầy năng lượng! Mong chị luôn tự tin, vững vàng và thành công hơn nữa trên con đường sự nghiệp. Chị là hình mẫu mạnh mẽ và đáng ngưỡng mộ đó nha 💪🌷"
+        data-signature=""
+      />
+    </div>
+    <div class="floating-img" id="img5">
+      <img
+        src="img/chanh.jpg"
+        data-full-src="img/chanh.jpg"
+        alt="hình 3"
+        data-heading="Gửi Chị Chanh"
+        data-text="Chúc chị cả một ngày 20/10 thật ý nghĩa và hạnh phúc bên anh và hai bé đáng yêu. Mong chị luôn giữ được nụ cười tươi tắn, gia đình nhỏ của chị mãi ngập tràn yêu thương và tiếng cười 💖🏡"
+        data-signature=""
+      />
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div class="flip-card" id="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img id="modal-image" src="" alt="Ảnh phóng to" />
+            <div class="flip-hint">(Nhấp vào ảnh để xem lời chúc)</div>
+          </div>
+
+          <div class="flip-card-back">
+            <h1 id="modal-heading"></h1>
+            <p id="modal-text"></p>
+            <p class="signature" id="modal-signature"></p>
+          </div>
+        </div>
+      </div>
+
+      <span class="modal-close" id="modal-close">&times;</span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

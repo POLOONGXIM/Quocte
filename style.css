@@ -1,0 +1,223 @@
+/* Cài đặt chung (Giữ nguyên) */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fce38a 0%, #f38181 100%);
+}
+
+/* Nền mờ (Thêm 'perspective' để tạo không gian 3D) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75); /* Tăng độ mờ */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Ẩn đi ban đầu */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  /* Quan trọng: Thêm không gian 3D */
+  perspective: 1000px;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Nút đóng (X) (Thay đổi 1 chút) */
+.modal-close {
+  position: fixed; /* Cố định trên màn hình */
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: #fff; /* Màu trắng cho dễ thấy trên nền mờ */
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+  z-index: 1002; /* Nằm trên cả thẻ lật */
+}
+.modal-close:hover {
+  color: #ccc;
+}
+
+/* --- CSS CHO THẺ LẬT 3D (THAY THẾ .modal-content) --- */
+
+/* Vỏ bọc bên ngoài của thẻ (xác định kích thước) */
+.flip-card {
+  background-color: transparent;
+  width: 90vw;
+  height: 90vh;
+  max-width: 600px; /* Chiều rộng tối đa */
+  max-height: 800px; /* Chiều cao tối đa */
+  z-index: 1001;
+  cursor: pointer;
+
+  /* Hiệu ứng nảy (pop-up) */
+  transform: scale(0.8);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-backdrop.show .flip-card {
+  transform: scale(1);
+}
+
+/* Vỏ bọc bên trong (thứ sẽ lật) */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; /* Quan trọng: Kích hoạt 3D */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+/* Trạng thái khi thẻ bị lật (thêm bằng JS) */
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Định dạng chung cho cả 2 mặt */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Ẩn mặt sau */
+  backface-visibility: hidden;
+
+  background: rgb(138, 176, 197);
+  border-radius: 15px;
+  overflow: hidden; /* Tránh nội dung bị tràn */
+}
+
+/* Mặt trước (chứa ảnh) */
+.flip-card-front {
+  color: black;
+  /* Căn giữa ảnh và chữ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box; /* Tính cả padding vào kích thước */
+}
+
+#modal-image {
+  max-width: 100%;
+  max-height: 90%; /* Để chừa chỗ cho dòng chữ gợi ý */
+  height: auto;
+  border-radius: 10px;
+}
+
+.flip-hint {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* Mặt sau (chứa lời chúc) */
+.flip-card-back {
+  color: #333;
+  transform: rotateY(180deg); /* Lật sẵn 180 độ */
+  padding: 30px 35px;
+  overflow-y: auto; /* Tự cuộn nếu lời chúc quá dài */
+  box-sizing: border-box;
+}
+
+/* Style cho lời chúc (giữ nguyên) */
+.flip-card-back h1 {
+  color: #d9534f;
+  margin-top: 0;
+}
+.flip-card-back p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.flip-card-back .signature {
+  font-style: italic;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* --- CÁC STYLE CŨ (Giữ nguyên) --- */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.floating-img {
+  position: absolute;
+  z-index: 5;
+  animation: float 4s ease-in-out infinite;
+  cursor: pointer;
+}
+.floating-img img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  box-shadow: 5 5px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+}
+#img1 {
+  top: 35%;
+  left: 36%;
+  animation-delay: 0s;
+}
+#img2 {
+  top: 60%;
+  right: 11%;
+  animation-delay: 1.5s;
+}
+#img3 {
+  top: 15%;
+  right: 10%;
+  animation-delay: 3s;
+}
+#img4 {
+  top: 60%;
+  left: 11%;
+  animation-delay: 2s;
+}
+#img5 {
+  top: 18%;
+  left: 11%;
+  animation-delay: 4s;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.heart {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #ff69b4;
+  animation-name: fall;
+  animation-timing-function: linear;
+  user-select: none;
+  z-index: 1;
+}
